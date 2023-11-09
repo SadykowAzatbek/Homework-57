@@ -18,7 +18,16 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-  }
+  };
+
+  const checkUser = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.type === 'checkbox') {
+      setUser((prev) => ({
+        ...prev,
+        [event.target.name]: event.target.checked,
+      }));
+    }
+  };
 
   const onFormSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -26,7 +35,6 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
       id: Math.random().toString(),
       ...user,
     });
-    console.log(user);
   };
 
   return (
@@ -60,6 +68,7 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
           name="active"
           id="active"
           className="mt-3 ms-2"
+          onChange={checkUser}
         />
       </div>
       <div className="form-group">
