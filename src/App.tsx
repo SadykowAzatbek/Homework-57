@@ -1,6 +1,7 @@
 import UserForm from './components/UserForm/UserForm';
 import {useState} from 'react';
 import {UserProps} from '../UserProps';
+import Users from './components/Users/Users';
 
 function App() {
   const [user, setUser] = useState<UserProps[]>([]);
@@ -17,7 +18,7 @@ function App() {
             <UserForm onSubmit={createUser}/>
           </div>
           <div className='col-6'>
-
+            <Users users={user}></Users>
           </div>
         </div>
       </main>
